@@ -1,0 +1,69 @@
+(function() {
+'use strict';
+if (window.v_invincafy_overlord) return;
+window.v_invincafy_overlord = true;
+
+const PHOTOS = [
+'https://raw.githubusercontent.com/developanidea/invincibafy/main/Photos/download.png',
+'https://raw.githubusercontent.com/developanidea/invincibafy/main/Photos/download2.png',
+'https://raw.githubusercontent.com/developanidea/invincibafy/main/Photos/download3.png',
+'https://raw.githubusercontent.com/developanidea/invincibafy/main/Photos/download4.png',
+'https://raw.githubusercontent.com/developanidea/invincibafy/main/Photos/download5.png',
+'https://raw.githubusercontent.com/developanidea/invincibafy/main/Photos/download6.png',
+'https://raw.githubusercontent.com/developanidea/invincibafy/main/Photos/invinciblederp.png'
+];
+
+const style = document.createElement('style');
+style.innerHTML = `
+/* Viltrumite Aura */
+body {
+border: 15px solid #ffde59 !important;
+box-sizing: border-box !important;
+background-color: #0056b3 !important;
+}
+
+
+.v-mark-corner {
+position: fixed;
+width: 200px;
+z-index: 2000000;
+pointer-events: none;
+filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+transition: 0.5s ease-in-out;
+}
+
+#mark-tl { top: 20px; left: 20px; }
+#mark-br { bottom: 20px; right: 20px; transform: scaleX(-1); }
+
+
+a, button {
+color: #ffde59 !important;
+text-shadow: 2px 2px #cc0000 !important;
+font-weight: 900 !important;
+text-transform: uppercase !important;
+}
+`;
+document.head.appendChild(style);
+
+const tl = document.createElement('img');
+tl.id = 'mark-tl'; tl.className = 'v-mark-corner';
+tl.src = PHOTOS[0];
+document.body.appendChild(tl);
+
+const br = document.createElement('img');
+br.id = 'mark-br'; br.className = 'v-mark-corner';
+br.src = PHOTOS[4];
+document.body.appendChild(br);
+
+
+document.addEventListener('mousedown', () => {
+tl.src = PHOTOS[Math.floor(Math.random() * PHOTOS.length)];
+br.src = PHOTOS[Math.floor(Math.random() * PHOTOS.length)];
+
+
+document.body.style.transform = `translate(${Math.random()*4}px, ${Math.random()*4}px)`;
+setTimeout(() => document.body.style.transform = 'none', 50);
+});
+
+console.log("velvet invincify is now on");
+})();
